@@ -21,11 +21,11 @@ public struct AdaptiveImageContent {
     
     public init(
         id: String = UUID().uuidString,
-        image: UIImage
+        image: CGImage
     ) {
         self.id = id
         self.imageContents = [160, 40, 64, 96, 320].map({ length in
-            let image = image.cgImage!.resized(width: length, height: length)!
+            let image = image.resized(width: length, height: length)!
             return ImageContent(image: image, length: length)
         })
     }

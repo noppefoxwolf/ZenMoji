@@ -67,7 +67,7 @@ final class ViewController: UIViewController {
     }
     
     func insertZenmoji() {
-        let image = UIImage(resource: .blobcat)
+        let image = UIImage(resource: .blobcat).cgImage!
         let adaptiveImageContent = AdaptiveImageContent(image: image)
         let adaptiveImageGlyph = NSAdaptiveImageGlyph(imageContent: adaptiveImageContent)
         let attributedText = NSAttributedString(adaptiveImageGlyph: adaptiveImageGlyph)
