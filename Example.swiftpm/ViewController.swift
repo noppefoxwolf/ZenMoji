@@ -11,14 +11,15 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
+        stepper.value = 16
         label.text = "Zenmoji Example"
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = .systemFont(ofSize: stepper.value)
         button.configuration?.title = "Insert ZenMoji"
         textView.supportsAdaptiveImageGlyph = true
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.separator.cgColor
         textView.layer.cornerRadius = 8
-        stepper.value = 16
+        
         
         let headerStackView = UIStackView(
             arrangedSubviews: [
@@ -61,6 +62,8 @@ final class ViewController: UIViewController {
         stepper.addAction(UIAction { [unowned self] _ in
             updateTextViewFontSize()
         }, for: .valueChanged)
+        
+        
     }
     
     func insertZenmoji() {

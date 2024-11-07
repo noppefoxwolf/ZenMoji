@@ -40,7 +40,7 @@ public struct AdaptiveImageContent {
         let imageContent = NSMutableData()
         let destination = CGImageDestinationCreateWithData(
             imageContent,
-            UTType.heic.identifier as CFString,
+            NSAdaptiveImageGlyph.contentType.identifier as CFString,
             imageContents.count,
             nil
         )!
