@@ -1,12 +1,6 @@
 import UIKit
 import UniformTypeIdentifiers
 
-extension NSAdaptiveImageGlyph {
-    public convenience init(imageContent: AdaptiveImageContent) {
-        self.init(imageContent: imageContent.makeData())
-    }
-}
-
 struct ImageContent {
     let image: CGImage
     let length: Int
