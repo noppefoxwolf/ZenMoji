@@ -1,4 +1,4 @@
-import UIKit
+import CoreImage
 import Accelerate
 
 extension CGImage {
