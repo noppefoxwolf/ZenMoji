@@ -2,6 +2,8 @@
 
 Zenmoji is a NSAdaptiveImageGlyph based custom emoji rendering.
 
+<img src="https://github.com/noppefoxwolf/ZenMoji/blob/main/.github/screenshot.png" width="320">
+
 # Usage
 
 ```swift
