@@ -1,6 +1,7 @@
 import UIKit
 import UniformTypeIdentifiers
 
+@available(iOS 18.0, *)
 public struct ImageContentProvider {
     let id: String
     let strikes: [EmojiImageStrike]

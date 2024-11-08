@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Zenmoji",
-    platforms: [.iOS(.v18)],
+    platforms: [.iOS(.v17)],
     products: [
         .library(
             name: "Zenmoji",
