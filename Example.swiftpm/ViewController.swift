@@ -10,7 +10,8 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        stepper.minimumValue = 12
+        stepper.maximumValue = 100
         stepper.value = 16
         label.text = "Zenmoji Example"
         label.font = .systemFont(ofSize: stepper.value)
@@ -67,7 +68,7 @@ final class ViewController: UIViewController {
     }
     
     func insertZenmoji() {
-        let image = UIImage(resource: .blobcat).cgImage!
+        let image = UIImage(resource: .blobcat)
         let adaptiveImageContent = AdaptiveImageContent(image: image)
         let adaptiveImageGlyph = NSAdaptiveImageGlyph(imageContent: adaptiveImageContent)
         let attributedText = NSAttributedString(adaptiveImageGlyph: adaptiveImageGlyph)

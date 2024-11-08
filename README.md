@@ -9,7 +9,7 @@ Zenmoji is a NSAdaptiveImageGlyph based custom emoji rendering.
 ```swift
 import Zenmoji
 
-let image = UIImage(resource: .blobcat).cgImage!
+let image = UIImage(resource: .blobcat)
 let adaptiveImageContent = AdaptiveImageContent(image: image)
 let adaptiveImageGlyph = NSAdaptiveImageGlyph(imageContent: adaptiveImageContent)
 let attributedText = NSAttributedString(adaptiveImageGlyph: adaptiveImageGlyph)

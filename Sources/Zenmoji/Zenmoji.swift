@@ -21,12 +21,18 @@ public struct AdaptiveImageContent {
     
     public init(
         id: String = UUID().uuidString,
-        image: CGImage
+        image: UIImage
     ) {
         self.id = id
         self.imageContents = [160, 40, 64, 96, 320].map({ length in
-            let image = image.resized(width: length, height: length)!
-            return ImageContent(image: image, length: length)
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = 1
+            let size = CGSize(width: length, height: length)
+            let renderer = UIGraphicsImageRenderer(size: size, format: format)
+            let scaledImage = renderer.image { context in
+                image.draw(in: CGRect(origin: .zero, size: size))
+            }
+            return ImageContent(image: scaledImage.cgImage!, length: length)
         })
     }
     
