@@ -15,7 +15,11 @@ final class ViewController: UIViewController {
         stepper.value = 16
         label.text = "Zenmoji Example"
         label.font = .systemFont(ofSize: stepper.value)
-        button.configuration?.title = "Insert ZenMoji"
+        
+        var title = AttributedString()
+        title += AttributedString("Insert ")
+        title.append(makeAttributedText())
+        button.configuration?.attributedTitle = title
         textView.supportsAdaptiveImageGlyph = true
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.separator.cgColor
@@ -68,14 +72,20 @@ final class ViewController: UIViewController {
     }
     
     func insertZenmoji() {
-        let image = UIImage(resource: .blobcat)
-        let adaptiveImageContent = AdaptiveImageContent(image: image)
-        let adaptiveImageGlyph = NSAdaptiveImageGlyph(imageContent: adaptiveImageContent)
-        let attributedText = NSAttributedString(adaptiveImageGlyph: adaptiveImageGlyph)
-        textView.insertAttributedText(attributedText)
+        let attributedText = makeAttributedText()
+        textView.insertAttributedText(NSAttributedString(attributedText))
     }
     
     func updateTextViewFontSize() {
         textView.font = UIFont.systemFont(ofSize: stepper.value)
+    }
+    
+    func makeAttributedText() -> AttributedString {
+        let image = UIImage(resource: .blobcat)
+        let adaptiveImageContent = AdaptiveImageContent(image: image)
+        let adaptiveImageGlyph = AttributedString.AdaptiveImageGlyph(imageContent: adaptiveImageContent)
+        let nsAdaptiveImageGlyph = NSAdaptiveImageGlyph(adaptiveImageGlyph)
+        let nsAttributedString = NSAttributedString(adaptiveImageGlyph: nsAdaptiveImageGlyph)
+        return AttributedString(nsAttributedString)
     }
 }
