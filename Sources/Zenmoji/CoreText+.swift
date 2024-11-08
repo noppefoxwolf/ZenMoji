@@ -2,7 +2,7 @@ import Foundation
 import CoreText
 
 extension AttributedString.AdaptiveImageGlyph {
-    public init(imageContent: AdaptiveImageContent) {
-        self.init(imageContent: imageContent.makeData())
+    public init(provider: ImageContentProvider) {
+        self.init(imageContent: provider.imageContent())
     }
 }

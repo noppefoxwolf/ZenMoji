@@ -45,18 +45,12 @@ final class ViewController: UIViewController {
         stackView.axis = .vertical
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(
-                equalTo: view.centerYAnchor
-            ),
-            stackView.leadingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.leadingAnchor,
-                constant: 20
-            ),
-            view.trailingAnchor.constraint(
-                equalTo: stackView.safeAreaLayoutGuide.trailingAnchor,
-                constant: 20
-            ),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.trailingAnchor),
             textView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
@@ -67,8 +61,6 @@ final class ViewController: UIViewController {
         stepper.addAction(UIAction { [unowned self] _ in
             updateTextViewFontSize()
         }, for: .valueChanged)
-        
-        
     }
     
     func insertZenmoji() {
@@ -82,8 +74,8 @@ final class ViewController: UIViewController {
     
     func makeAttributedText() -> AttributedString {
         let image = UIImage(resource: .blobcat)
-        let adaptiveImageContent = AdaptiveImageContent(image: image)
-        let adaptiveImageGlyph = AttributedString.AdaptiveImageGlyph(imageContent: adaptiveImageContent)
+        let provider = ImageContentProvider(image: image)
+        let adaptiveImageGlyph = AttributedString.AdaptiveImageGlyph(provider: provider)
         let nsAdaptiveImageGlyph = NSAdaptiveImageGlyph(adaptiveImageGlyph)
         let nsAttributedString = NSAttributedString(adaptiveImageGlyph: nsAdaptiveImageGlyph)
         return AttributedString(nsAttributedString)
